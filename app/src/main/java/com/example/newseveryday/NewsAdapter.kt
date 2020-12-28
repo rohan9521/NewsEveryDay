@@ -1,12 +1,14 @@
 package com.example.newseveryday
 
 import android.content.Context
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.browser.customtabs.CustomTabsIntent
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
@@ -21,7 +23,11 @@ class NewsAdapter(): RecyclerView.Adapter<NewsViewHolder>() {
         var view = LayoutInflater.from(parent.context).inflate(R.layout.item_news,parent,false)
         val viewHolder = NewsViewHolder(view)
         view.setOnClickListener(){
-            Toast.makeText(parent.context,"${items[viewHolder.adapterPosition]}",Toast.LENGTH_SHORT).show()
+
+            val url = items[viewHolder.adapterPosition].url
+            val builder =  CustomTabsIntent.Builder()
+            val customTabsIntent = builder.build();
+            customTabsIntent.launchUrl(context, Uri.parse(url));
         }
         return viewHolder
     }

@@ -12,7 +12,7 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 
 class NewsObjectViewModel:ViewModel() {
-    private val url = "http://newsapi.org/v2/top-headlines?country=in&apiKey=a5d9663c01f2423a82595f9ab3534711"
+    private val url = "http://api.mediastack.com/v1/news?access_key=ea725babecd0c5f8516e3d40c7fa7c93"
     private var _listNews = MutableLiveData<MutableList<NewsObject>>()
     val listNews: LiveData<MutableList<NewsObject>>
     get() = _listNews
